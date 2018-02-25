@@ -267,7 +267,7 @@ var instructions_block = {
 	type: 'poldrack-instructions',
 	pages: [
 		'<div class = centerbox><p class = block-text>In this experiment you will see groups of five arrows and dashes pointing left or right (e.g &larr; &larr; &larr; &larr; &larr;, or &mdash; &mdash; &rarr; &mdash; &mdash;) presented randomly at the top or bottom of the screen.</p><p class = block-text>Your job is to indicate which way the central arrow is pointing by pressing the corresponding arrow key.</p></p></p></div>',
-		'<div class = centerbox><p class = block-text>Before the arrows and dashes come up, an * will occasionally come up somewhere on the screen.</p><p class = block-text>Irrespective of whether or where the * appears, it is important that you respond as quickly and accurately as possible by pressing the arrow key corresponding to the direction of the center arrow.</p><p class = block-text>After you end instructions we will start with practice. During practice you will receive feedback about whether your responses are correct. You will not receive feedback during the rest of the experiment.</p></div>'
+		'<div class = centerbox><p class = block-text>Before the arrows and dashes come up, an * will occasionally come up somewhere on the screen.</p><p class = block-text>Irrespective of whether or where the * appears, it is important that you <strong>respond as quickly and accurately as possible</strong> by pressing the arrow key corresponding to the direction of the center arrow.</p><p class = block-text>After you end instructions we will start with practice. During practice you will receive feedback about whether your responses are correct. You will not receive feedback during the rest of the experiment.</p></div>'
 	],
 	allow_keys: false,
 	data: {
