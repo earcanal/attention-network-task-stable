@@ -239,8 +239,8 @@ var test_intro_block = {
 
 var end_block = {
 	type: 'poldrack-text',
-	text: '<div class = centerbox><p class = center-block-text>Thanks for completing this task!</p><p class = center-block-text>Press <strong>enter</strong> to continue.</p></div>',
-	cont_key: [13],
+	text: '<div class = centerbox><p class = center-block-text>Thanks for completing this task!</p><p class = center-block-text>Please contact the researcher.</p></div>',
+	choices: [99],
 	data: {
 		trial_id: "end",
     	exp_id: 'attention_network_task_2'
