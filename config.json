@@ -1,8 +1,8 @@
 {
-    "name": "Attention Network Task (no feedback)",
-    "exp_id": "attention-network-task-no-feedback",
-    "url": "https://www.github.com/earcanal/attention-network-task-no-feedback/",
-    "description":"Attention Network Task with no feedback screen at the end of the task.",
+    "name": "Attention Network Task",
+    "exp_id": "attention-network-task",
+    "url": "https://www.github.com/earcanal/attention-network-task/",
+    "description":"Attention Network Task.",
     "instructions": "N/A",
     "template":"jspsych",
     "cognitive_atlas_task_id": "",
