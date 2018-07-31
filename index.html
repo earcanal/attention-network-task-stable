@@ -22,17 +22,41 @@
 <script src='js/jspsych/plugins/jspsych-survey-text.js'></script>
 <script src='js/jspsych/plugins/jspsych-call-function.js'></script>
 <script src='js/jspsych/poldrack_plugins/poldrack_utils.js'></script>
+<script src="js/util.js"></script>
+<script>
+    var PostTask = $.QueryString.PostTask ? $.QueryString.PostTask : 0;
+    var Practise = $.QueryString.Practise ? $.QueryString.Practise : 1;
+    var Skip     = $.QueryString.Skip     ? $.QueryString.Skip     : 0;
+    console.log('PostTask = ' + PostTask + "\nPractise = " + Practise + "\nSkip = " + Skip);
+</script>
 <script src='experiment.js'></script>
 
 <script>
-$( document ).ready(function() {
+$(document).ready(function() {
+    // allow skipping
+    var myfunc = function() {
+        return 'do nothing';
+    }
+    var block = {
+        type: 'call-function',
+        func: myfunc
+    }
+
+    if (Skip == 1) {
+        timeline = [];
+        timeline.push(block);
+        fullscreen = false;
+    } else {
+        timeline = attention_network_task_experiment;
+        fullscreen = true;
+    }
 
     jsPsych.init({
-             timeline: attention_network_task_2_experiment,
+             timeline: timeline,
              display_element: "getDisplayElement",
-             fullscreen: true,
+             fullscreen: fullscreen,
              on_trial_finish: function(data){
-               addID('attention-network-task-no-feedback')
+               addID('attention-network-task')
              },
 
              on_finish: function(data){
@@ -44,8 +68,6 @@ $( document ).ready(function() {
                  })
 
                  promise.then(function(data) {
-
-
                      $.ajax({
                          type: "POST",
                          url: '/save',
@@ -59,8 +81,10 @@ $( document ).ready(function() {
                              if (err.status == 200){
                                 document.location = "/next"
                              } else {
-                                 // If error, assue local save
-                                 jsPsych.data.localSave('attention-network-task-no-feedback_results.csv', 'csv');
+                                 // if error, assume local save
+                                if (Skip == 0) {
+                                    jsPsych.data.localSave('attention-network-task-no-feedback_results.json', 'json');
+                                }
                             }
                          }
                      });
