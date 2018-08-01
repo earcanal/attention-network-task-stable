@@ -579,4 +579,5 @@ for (b = 0; b < blocks.length; b++) {
 }
 if (PostTask == 1)
 	attention_network_task_experiment.push(post_task_block)
-attention_network_task_experiment.push(end_block)
+if (Lab == 1)
+	attention_network_task_experiment.push(end_block)

@@ -24,10 +24,10 @@
 <script src='js/jspsych/poldrack_plugins/poldrack_utils.js'></script>
 <script src="js/util.js"></script>
 <script>
-    var PostTask = $.QueryString.PostTask ? $.QueryString.PostTask : 0;
-    var Practise = $.QueryString.Practise ? $.QueryString.Practise : 1;
-    var Skip     = $.QueryString.Skip     ? $.QueryString.Skip     : 0;
-    console.log('PostTask = ' + PostTask + "\nPractise = " + Practise + "\nSkip = " + Skip);
+    var Lab      = $.QueryString.Lab      ? $.QueryString.Lab      : 0;  // 1 = running in the lab
+    var PostTask = $.QueryString.PostTask ? $.QueryString.PostTask : 0;  // 1 = add post-task block
+    var Practise = $.QueryString.Practise ? $.QueryString.Practise : 1;  // 1 = include practice block
+    var Skip     = $.QueryString.Skip     ? $.QueryString.Skip     : 0;  // 1 = skip task
 </script>
 <script src='experiment.js'></script>
 
@@ -58,15 +58,12 @@ $(document).ready(function() {
              on_trial_finish: function(data){
                addID('attention-network-task')
              },
-
              on_finish: function(data){
-
                  // Serialize the data
                  var promise = new Promise(function(resolve, reject) {
                      var data = jsPsych.data.dataAsJSON();
                      resolve(data);
                  })
-
                  promise.then(function(data) {
                      $.ajax({
                          type: "POST",
@@ -90,7 +87,6 @@ $(document).ready(function() {
                      });
                  })
              }
-
       });
 });
 </script>
